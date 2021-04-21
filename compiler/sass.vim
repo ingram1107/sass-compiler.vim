@@ -1,6 +1,6 @@
 " Compiler: Sass
 " Maintainer: Little Clover <littleclover909@gmail.com>
-" Last Chnage: 2021 Apr 21
+" Last Change: 2021 Apr 21
 
 if exists("current_compiler")
   finish
