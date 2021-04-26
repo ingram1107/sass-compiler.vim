@@ -9,7 +9,7 @@ endif
 let s:css_dir = expand("%:p:h:h") . "/css/"
 let s:css_file = s:css_dir . "main.css"
 
-fun s:call_shell(cmd, arg)
+fun s:async_shell(cmd, arg)
   if has('nvim')
     call jobstart(split(&shell) + split(&shellcmdflag) + [ a:cmd . ' ' . a:arg ])
   elseif has('vim') && v:version >= 800
@@ -24,10 +24,10 @@ fun s:create_css()
     if !empty(glob(s:css_file))
       return
     endif
-    call s:call_shell('touch', s:css_file)
+    call s:async_shell('touch', s:css_file)
   else
-    call s:call_shell('mkdir', s:css_dir)
-    call s:call_shell('touch', s:css_file)
+    call s:async_shell('mkdir', s:css_dir)
+    call s:async_shell('touch', s:css_file)
   endif
   return
 endfun
